@@ -1,0 +1,32 @@
+/* ==|====================
+   Base
+   ======================= */
+
+// Nav
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  //
+  > li {
+    > a {
+      display: inline-block;
+      @include hover-focus {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Nav Inline
+.nav-inline {
+  > li {
+    display: inline-block;
+  }
+
+  > li + li,
+  > a + a {
+    margin-left: 16px;
+  }
+}

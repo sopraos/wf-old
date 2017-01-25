@@ -1,0 +1,85 @@
+/* ==|====================
+   Buutons
+   ======================= */
+
+
+.button {
+  display: inline-block;
+  padding: rem(8) rem(16);
+  font-size: rem($font-size-base);
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
+  border-radius: rem($button-border-radius);
+  text-align: center;
+  user-select: none;
+  border: $border-width solid transparent;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+}
+
+.button-divider {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin-top: 5px;
+  margin-left: -13px;
+  text-align: center;
+  font-size: rem(12);
+  z-index: 2;
+  line-height: (22px);
+  @include border-radius(rem(22));
+  color: rgba(22,24,27,.54);
+  background-color: #fff;
+  user-select: none;
+}
+
+.button-first-outline {
+  @include button-outline($button-first-bg);
+}
+
+// Buttons
+.button-first-outline {
+  @include button-outline($button-first-bg);
+}
+.button-info-outline {
+  @include button-outline($button-info-bg);
+}
+.button-success-outline {
+  @include button-outline($button-success-bg);
+}
+.button-warning-outline {
+  @include button-outline($button-warning-bg);
+}
+.button-danger-outline {
+  @include button-outline($button-danger-bg);
+}
+.button-dark-outline {
+  @include button-outline($button-dark-bg);
+}
+
+
+// Button Variant
+.button-first {
+  @include button-variant($button-first-bg, $button-first-border);
+}
+.button-info {
+  @include button-variant($button-info-bg, $button-info-border);
+}
+.button-success {
+  @include button-variant($button-success-bg, $button-success-border);
+}
+.button-warning {
+  @include button-variant($button-warning-bg, $button-warning-border);
+}
+.button-danger {
+  @include button-variant($button-danger-bg, $button-danger-border);
+}
+.button-dark {
+  @include button-variant($button-dark-bg, $button-dark-border);
+}

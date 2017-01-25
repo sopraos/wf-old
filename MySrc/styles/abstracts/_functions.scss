@@ -1,0 +1,53 @@
+/* ==|====================
+   Functions
+   ======================= */
+
+// Conversion d’unités
+// ==|====================
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// em()
+// Convertir des valeurs de pixel en ems.
+
+@function em($target, $context: $font-size-base) {
+  @if not unitless($target) {
+    $target: strip-units($target);
+  }
+  @if not unitless($context) {
+    $context: strip-units($context);
+  }
+  @if $target == 0 { @return 0 }
+  @return $target / $context + 0em;
+}
+
+// rem()
+// Convertir des valeurs de pixel en rems.
+
+@function rem($target, $context: $font-size-base) {
+  @if not unitless($target) {
+    $target: strip-units($target);
+  }
+  @if not unitless($context) {
+    $context: strip-units($context);
+  }
+  @if $target == 0 { @return 0 }
+  @if $target == 0 { @return 0 }
+  @return $target / $context + 0rem;
+}
+
+// px()
+// Convertir des valeurs de em en pixels.
+
+@function px($target, $context: $font-size-base) {
+  @if not unitless($target) {
+    $pxval: strip-units($target);
+  }
+  @if not unitless($context) {
+    $base: strip-units($context);
+  }
+  @if $target == 0 { @return 0 }
+  @return $target * $context + 0px;
+}

@@ -1,0 +1,175 @@
+/* ==|====================
+   Variables
+   ======================= */
+
+// = Colors
+// -----------------------------
+
+// color elements
+$white:                       #FFF !default;
+$black:                       #000 !default;
+
+$blue-dark:                   #4A89DC !default;
+$blue-light:                  #5D9CEC !default;
+
+$aqua-dark:                   #3BAFDA !default;
+$aqua-light:                  #4FC1E9 !default;
+
+$mint-dark:                   #37BC9B !default;
+$mint-light:                  #48CFAD !default;
+
+$grass-dark:                  #8CC152 !default;
+$grass-light:                 #A0D468 !default;
+
+$sunflower-dark:              #F6BB42 !default;
+$sunflower-light:             #FFCE54 !default;
+
+$bittersweet-dark:            #E9573F !default;
+$bittersweet-light:           #FC6E51 !default;
+
+$grapefruit-dark:             #DA4453 !default;
+$grapefruit-light:            #ED5565 !default;
+
+$lavender-dark:               #967ADC !default;
+$lavender-light:              #AC92EC !default;
+
+$pinkrose-dark:               #D770AD !default;
+$pinkrose-light:              #EC87C0 !default;
+
+$lightgray-dark:              #E6E9ED !default;
+$lightgray-light:             #F5F7FA !default;
+
+$mediumgray-dark:             #AAB2BD !default;
+$mediumgray-light:            #CCD1D9 !default;
+
+$darkgray-dark:               #434A54 !default;
+$darkgray-light:              #656D78 !default;
+
+$first: 							        $blue-dark;
+$secondary: 					        $darkgray-light;
+$danger: 							        $grapefruit-dark;
+$success: 						        $grass-dark;
+$warning: 						        $sunflower-dark;
+$info:                        $aqua-dark;
+$dark: 								        #2f353b;
+$white: 							        $white;
+
+
+//
+// Paramètres <body>.
+$body-bg:     $white !default;
+$body-color:  $darkgray-dark !default;
+
+
+// Links
+//
+$link-color:            $first !default;
+$link-decoration:       none !default;
+$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+
+
+
+// Typographie
+//
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+
+$font-size-base:  16 !default;
+
+$line-height-base:  1.5 !default;
+
+// ==|====================
+// 10px = 0.625rem
+// 12px = 0.75rem
+// 14px = 0.875rem
+// 16px = 1rem (base)
+// 20px = 1.25rem
+// 24px = 1.5rem
+// 28px = 1.75rem
+// 32px = 2rem
+
+
+$font-size-h1:  32 !default;
+$font-size-h2:  28 !default;
+$font-size-h3:  24 !default;
+$font-size-h4:  20 !default;
+$font-size-h5:  16 !default;
+$font-size-h6:  14 !default;
+
+$headings-margin-bottom: 0.5rem !default;
+$headings-font-family:   inherit !default;
+$headings-font-weight:   500 !default;
+$headings-line-height:   1.1 !default;
+$headings-color:         inherit !default;
+
+
+// Components
+//
+// Défini des formats courants de padding et border radius et bien plus encore.
+
+$border-radius: 2 !default;
+
+$border-width: 1px !default;
+
+
+// Buttons
+
+$button-line-height:  1.25 !default;
+$button-font-weight:  normal !default;
+
+$button-border-radius: $border-radius !default;
+
+$button-first-bg:             $first !default;
+$button-info-bg:             	$info !default;
+$button-success-bg:           $success !default;
+$button-warning-bg:           $warning !default;
+$button-danger-bg:            $danger !default;
+$button-dark-bg:           	  $dark !default;
+
+$button-first-border:         $button-first-bg !default;
+$button-info-border:         	$button-info-bg !default;
+$button-success-border:       $button-success-bg !default;
+$button-warning-border:       $button-warning-bg !default;
+$button-danger-border:        $button-danger-bg !default;
+$button-dark-border:          $button-dark-bg !default;
+
+
+
+// Forms
+
+$input-line-height:           1.25 !default;
+
+$form-group-margin-bottom:    16 !default;
+
+$input-height:                40 !default
+$input-color:                 $darkgray-light !default;
+$input-bg:                    $white;
+
+$cursor-disabled: not-allowed !default;
+
+// Grid
+
+//== Points d’arrêt de grille
+$grid-breakpoints: (
+	// Extra small screen / phone
+		s: 0,
+	// Medium screen / tablet
+		m: 768px,
+	// Large screen / desktop
+		l: 1024px,
+	// Extra large screen / wide desktop
+	//xl: 1200px
+) !default;
+
+
+// Conteneurs grille
+// Définir la largeur maximale de `.container` pour différentes tailles d’écran.
+$container-max-widths: (
+	m: 720px,
+	l: 1140px
+) !default;
+
+// Colonnes de la grille
+// Définir le nombre de colonnes et de spécifier la largeur des gouttières.
+$grid-columns:      12 !default;
+$grid-gutter-width: 30px !default;

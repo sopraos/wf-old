@@ -1,0 +1,21 @@
+/* ==|====================
+   Grille
+   ======================= */
+
+// Container
+// Définir la largeur du container
+.container {
+	@include container();
+	@include container-max-widths();
+
+}
+
+// Row
+// Les lignes contiennent et effacer les flotteurs de vos colonnes.
+.row {
+	@include row();
+}
+
+// Colonnes
+// Modèles communs pour les petites et grandes colonnes de la grille
+@include grid-columns();

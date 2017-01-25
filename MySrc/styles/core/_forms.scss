@@ -1,0 +1,91 @@
+/* ==|====================
+   Forms
+   ======================= */
+
+label {
+  display: inline-block;
+  margin-bottom: rem(8);
+}
+
+input:not([type]),
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: rem(8) rem(12);
+  font-size: rem($font-size-base);
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  border: $border-width solid #ccc;
+  border-radius: rem($border-radius);
+
+
+  @include  focus {
+    border-color: #0DAFE0;
+    outline: none;
+  }
+}
+
+select {
+  &:not([size]):not([multiple]) {
+    height: rem($input-height);
+  }
+
+  &:focus::-ms-value {
+    color: $input-color;
+    background-color: $input-bg;
+  }
+}
+
+.form-group {
+  margin-bottom: rem($form-group-margin-bottom);
+}
+
+///
+
+.form-inline {
+
+  .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  input:not([type]),
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="week"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  input[type="color"],
+  select,
+  textarea {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+
+}

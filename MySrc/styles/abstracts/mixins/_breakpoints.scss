@@ -1,0 +1,77 @@
+/* ==|====================
+   Breakpoint
+   ======================= */
+
+// Point d’arrêt viewport tailles et médias requêtes.
+//
+
+// Nom du point d’arrêt suivant, ou null pour le dernier point d’arrêt.
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Largeur minimale de point d’arrêt. Null pour les plus petits (premier) point d’arrêt.
+//
+//    >> breakpoint-min(s, (s: 0, m: 768px))
+//    544px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// La valeur maximale est calculée comme le minimum de la prochaine moins 0,1.
+//
+//    >> breakpoint-max(s, (s: 0, m: 768px))
+//    767px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+// Médias d’au moins la largeur minimale de point d’arrêt. Aucune requête pour le plus petit point d’arrêt.
+// En fait le @content s’applique sur le point d’arrêt donné et plus large.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Médias d’au maximum la largeur maximale de point d’arrêt. Aucune requête pour le plus grand point d’arrêt.
+// En fait le @content s’applique sur le point d’arrêt donné et plus étroit.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Les médias entre la largeurs minimum et maximum du point d'arrêt.
+// Pas de minimum pour le plus petit point d’arrêt et pas de maximum pour le plus grand.
+// En fait le @content s’applique uniquement au point d’arrêt donné, pas de Viewports tout plus larges ou plus étroits.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-up($name, $breakpoints) {
+    @include media-breakpoint-down($name, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Les médias qui s’étend sur plusieurs largeurs de point d’arrêt.
+// En fait le @content s'applique entre le min et max points d’arrêt
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-up($lower, $breakpoints) {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}

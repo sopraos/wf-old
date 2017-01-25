@@ -1,0 +1,77 @@
+/* ==|====================
+   Grid Framework
+   ======================= */
+
+/// Système de grille
+// Framework de génération de grille
+@mixin grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  // Propriétés communes pour tous les points d'arrêt
+  %grid-column {
+    position: relative;
+    // Empêcher des colonnes de s’effondrer lorsqu’il est vide
+    min-height: 1px;
+    // Gouttière interne par l’intermédiaire de padding
+    padding-left: ($gutter / 2);
+    padding-right: ($gutter / 2);
+  }
+  @each $breakpoint in map-keys($breakpoints) {
+    @for $i from 1 through $columns {
+      .col-#{$breakpoint}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+    @include media-breakpoint-up($breakpoint) {
+      %grid-column-float-#{$breakpoint} {
+        float: left;
+      }
+      @for $i from 1 through $columns {
+        .col-#{$breakpoint}-#{$i} {
+          @extend %grid-column-float-#{$breakpoint};
+          @include col-span($i, $columns);
+        }
+      }
+      // Col Center
+      .col-#{$breakpoint}-center {
+        margin: 0 auto;float: none;
+      }
+
+    }
+  }
+}
+
+/// Mixins
+// Générer des colonnes de la grille sémantique avec ces mixins.
+@mixin container($gutter: $grid-gutter-width) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  @include clearfix();
+}
+
+// Pour chaque point d'arrêt, définit la largeur maximale du conteneur dans une requête de médias
+@mixin container-max-widths($max-widths: $container-max-widths) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint) {
+      max-width: $container-max-width;
+    }
+  }
+}
+@mixin row($gutter: $grid-gutter-width) {
+  @include clearfix();
+
+  margin-left:  ($gutter / -2);
+  margin-right: ($gutter / -2);
+}
+
+@mixin col($gutter: $grid-gutter-width) {
+  position: relative;
+  float: left;
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+}
+
+@mixin col-span($size, $columns: $grid-columns) {
+  width: percentage($size / $columns);
+}

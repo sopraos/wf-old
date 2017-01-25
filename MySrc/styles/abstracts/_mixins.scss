@@ -1,0 +1,78 @@
+/* ==|====================
+   Mixins
+   ======================= */
+
+//___ Hovers ___
+@mixin hover {
+  &:hover { @content; }
+}
+
+//___ Hovers & Focus ___
+@mixin hover-focus {
+  &:focus,
+  &:hover { @content; }
+}
+
+//___ Hovers, Focus, Active ___
+@mixin hover-focus-active {
+  &:focus,
+  &:active,
+  &:hover { @content; }
+}
+
+//___ Hovers, Focus, * ___
+@mixin plain-hover-focus {
+  &,
+  &:focus,
+  &:hover { @content; }
+}
+
+//___ Focus ___
+@mixin focus {
+  &:focus { @content; }
+}
+
+//___ Border Radius ___
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+//___ Button ___
+//== Outline
+@mixin button-outline($color) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+  @include hover-focus {
+    color: #fff;
+    background-color: $color;
+    border-color: $color;
+  }
+}
+//== Variant
+@mixin button-variant($background, $border) {
+  color: #fff;
+  background-color: $background;
+  border-color: $border;
+
+  @include hover-focus {
+    color: #fff;
+    background-color: darken($background, 11%);
+    border-color: darken($border, 13%);
+  }
+}
+
+//___ Clearfix ___
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//** ==|====================
+@import "mixins/breakpoints";
+@import "mixins/grid-framework";
