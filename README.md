@@ -1,5 +1,1 @@
-# workflow frontend
-
-Quick start.
-
-***
+À propos
